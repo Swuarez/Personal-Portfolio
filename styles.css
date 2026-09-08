@@ -1,0 +1,258 @@
+:root {
+  --deep: #040b1c;
+  --navy: #0a1f44;
+  --blue: #2563eb;
+  --sky: #7dd3fc;
+  --text: #eaf2ff;
+  --muted: #9fb3d4;
+  --glass: rgba(10, 31, 68, 0.55);
+  --glass-border: rgba(125, 211, 252, 0.25);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  color: var(--text);
+  background: var(--deep);
+  line-height: 1.6;
+}
+
+/* Video background + blue gradient wash */
+.bg-video {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+.bg-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(160deg,
+    rgba(4, 11, 28, 0.82) 0%,
+    rgba(10, 31, 68, 0.62) 45%,
+    rgba(37, 99, 235, 0.38) 100%);
+}
+
+/* Floating navbar — centered glass pill */
+nav {
+  position: fixed;
+  top: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  display: flex;
+  gap: 0.2rem;
+  padding: 0.4rem;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 8px 32px rgba(4, 11, 28, 0.45),
+    inset 0 1px 0 rgba(125, 211, 252, 0.12);
+  transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+nav.scrolled {
+  background: rgba(6, 18, 40, 0.88);
+  border-color: rgba(125, 211, 252, 0.4);
+  box-shadow: 0 10px 40px rgba(4, 11, 28, 0.6), 0 0 24px rgba(37, 99, 235, 0.18);
+}
+nav a {
+  padding: 0.45rem 1.1rem;
+  border-radius: 999px;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.25s, background 0.25s;
+}
+nav a:hover {
+  color: var(--text);
+  background: rgba(125, 211, 252, 0.08);
+}
+nav a.active {
+  color: var(--deep);
+  background: linear-gradient(90deg, var(--sky), var(--blue));
+}
+nav a:focus-visible {
+  outline: 2px solid var(--sky);
+  outline-offset: 2px;
+}
+
+main { max-width: 62rem; margin: 0 auto; padding: 0 1.5rem; }
+
+section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 6rem 0 4rem;
+}
+
+h1 {
+  font-size: clamp(2.6rem, 7vw, 5rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+h2 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.75rem;
+}
+.gradient-text {
+  background: linear-gradient(90deg, var(--sky), var(--blue));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.role {
+  display: inline-block;
+  margin-bottom: 1.25rem;
+  padding: 0.35rem 1rem;
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+  background: var(--glass);
+  color: var(--sky);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.lead {
+  max-width: 34rem;
+  margin-top: 1.5rem;
+  color: var(--muted);
+  font-size: 1.05rem;
+  font-weight: 300;
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 2rem;
+}
+.skills span {
+  padding: 0.4rem 0.95rem;
+  border-radius: 999px;
+  border: 1px solid var(--glass-border);
+  background: var(--glass);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* Projects */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1.25rem;
+}
+.card {
+  position: relative;
+  overflow: hidden;
+  padding: 1.75rem;
+  border-radius: 1.25rem;
+  border: 1px solid var(--glass-border);
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+/* Gradient hairline along the top edge, revealed on hover */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--sky), var(--blue));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-6px);
+  border-color: var(--sky);
+}
+.card:hover::before { opacity: 1; }
+.card h3 { font-size: 1.15rem; font-weight: 500; margin-bottom: 0.6rem; }
+.card p { color: var(--muted); font-size: 0.95rem; font-weight: 300; }
+.card .tags { margin-top: 1.1rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.card .tags span {
+  font-size: 0.75rem;
+  color: var(--sky);
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--glass-border);
+}
+
+/* Contact */
+.contact-email {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.9rem 2.2rem;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--sky), var(--blue));
+  color: var(--deep);
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.contact-email:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(37, 99, 235, 0.45);
+}
+.contact-email:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 3px;
+}
+
+footer {
+  padding: 3rem 1.5rem 2rem;
+  text-align: center;
+}
+.socials {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+.socials a {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: 1px solid var(--glass-border);
+  background: var(--glass);
+  color: var(--muted);
+  transition: color 0.25s, border-color 0.25s, transform 0.25s;
+}
+.socials a:hover {
+  color: var(--sky);
+  border-color: var(--sky);
+  transform: translateY(-3px);
+}
+.socials a:focus-visible {
+  outline: 2px solid var(--sky);
+  outline-offset: 3px;
+}
+.socials svg { width: 1.25rem; height: 1.25rem; fill: currentColor; }
+footer p { margin-top: 1.5rem; color: var(--muted); font-size: 0.8rem; font-weight: 300; }
+
+@media (max-width: 480px) {
+  nav { top: 1rem; }
+  nav a { padding: 0.4rem 0.75rem; font-size: 0.8rem; }
+  section { padding-top: 7rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+  /* AOS hides [data-aos] elements until JS animates them in — we skip that JS, so un-hide them */
+  [data-aos] { opacity: 1 !important; transform: none !important; }
+}
