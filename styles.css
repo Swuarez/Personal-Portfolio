@@ -88,11 +88,11 @@ nav a:focus-visible {
 main { max-width: 62rem; margin: 0 auto; padding: 0 1.5rem; }
 
 section {
-  min-height: 100vh;
+  min-height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 6rem 0 4rem;
+  padding: 4rem 0 2rem;
 }
 
 h1 {
@@ -148,6 +148,20 @@ h2 {
   color: var(--muted);
 }
 
+
+
+/* Favorite Songs */
+.favsong {
+  max-width: 70rem;
+  padding: 0.75rem;
+  border: 1px solid var(--glass-border);
+  border-radius: 1rem;
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.favsong iframe { display: block; }
+
 /* Projects */
 .grid {
   display: grid;
@@ -171,7 +185,6 @@ h2 {
   position: absolute;
   inset: 0 0 auto 0;
   height: 2px;
-  background: linear-gradient(90deg, var(--sky), var(--blue));
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -202,7 +215,6 @@ h2 {
   text-decoration: none;
   padding: 0.45rem 1.1rem;
   border-radius: 999px;
-  border: 1px solid var(--glass-border);
   transition: color 0.25s, border-color 0.25s, transform 0.25s, box-shadow 0.25s;
 }
 .card .links a:hover { color: var(--sky); border-color: var(--sky); }

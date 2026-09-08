@@ -51,7 +51,7 @@ if (!reducedMotion) {
 
 // Tighten up the navbar once the page is scrolled
 const nav = document.querySelector("nav");
-addEventListener("scroll", () => nav.classList.toggle("scrolled", scrollY > 24), { passive: true });
+addEventListener("scroll", () => nav.classList.toggle("scrolled", scrollY > 0.5), { passive: true });
 
 // Highlight the nav link of the section currently in view
 const links = document.querySelectorAll("nav a");
