@@ -92,7 +92,7 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 4rem 0 2rem;
+  padding: 8rem 0 2rem;
 }
 
 h1 {
@@ -155,7 +155,7 @@ h2 {
   max-width: 70rem;
   padding: 0.75rem;
   border: 1px solid var(--glass-border);
-  border-radius: 1rem;
+  border-radius: 1rem;  
   background: var(--glass);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -171,7 +171,7 @@ h2 {
 .card {
   position: relative;
   overflow: hidden;
-  padding: 1.75rem;
+  padding: 1.25rem;
   border-radius: 1.25rem;
   border: 1px solid var(--glass-border);
   background: var(--glass);
