@@ -178,6 +178,7 @@ h2 {
 .card:hover {
   transform: translateY(-6px);
   border-color: var(--sky);
+  box-shadow: 0 16px 40px rgba(4, 11, 28, 0.5), 0 0 24px rgba(37, 99, 235, 0.15);
 }
 .card:hover::before { opacity: 1; }
 .card h3 { font-size: 1.15rem; font-weight: 500; margin-bottom: 0.6rem; }
@@ -190,6 +191,37 @@ h2 {
   border-radius: 999px;
   border: 1px solid var(--glass-border);
 }
+.card .links { margin-top: 1.25rem; display: flex; gap: 0.6rem; }
+.card .links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 0.45rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid var(--glass-border);
+  transition: color 0.25s, border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+}
+.card .links a:hover { color: var(--sky); border-color: var(--sky); }
+.card .links a svg { width: 0.9rem; height: 0.9rem; }
+/* Live Demo is the primary action — gradient fill; GitHub stays outlined */
+.card .links a.primary {
+  color: var(--deep);
+  border-color: transparent;
+  background: linear-gradient(90deg, var(--sky), var(--blue));
+}
+.card .links a.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(37, 99, 235, 0.45);
+}
+.card .links a:focus-visible {
+  outline: 2px solid var(--sky);
+  outline-offset: 2px;
+}
+.card .links:empty { display: none; }
 
 /* Contact */
 .contact-email {
