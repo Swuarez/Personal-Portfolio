@@ -1,1 +1,1 @@
-This is my first every personal website
+This is my first ever personal website
