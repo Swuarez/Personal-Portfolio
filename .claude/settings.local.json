@@ -1,9 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "PowerShell(Copy-Item *)",
-      "PowerShell($path='C:\\\\Users\\\\MjAdo\\\\.claude\\\\projects\\\\C--Users-MjAdo-Desktop-Portfolio\\\\3f6df37a-0ee2-4bb4-bb99-534a8edbe928.jsonl'; $lines=Get-Content $path; $idx=-1; for\\($i=$lines.Count-1;$i -ge 0;$i--\\){ if\\($lines[$i] -match 'yes do that' -and $lines[$i] -match '\"role\":\"user\"'\\){ $idx=$i; break } }; \"user msg at line $idx of $\\($lines.Count\\)\"; for\\($j=$idx-1;$j -ge [Math]::Max\\(0,$idx-30\\);$j--\\){ try{ $o=$lines[$j] | ConvertFrom-Json }catch{ continue }; if\\($o.type -eq 'assistant' -and $o.message.content\\){ $t = \\($o.message.content | Where-Object {$_.type -eq 'text'} | ForEach-Object {$_.text}\\) -join \"`n\"; if\\($t\\){ \"---ASSISTANT TEXT \\(line $\\($j+1\\)\\)---\"; $t.Substring\\(0,[Math]::Min\\(2000,$t.Length\\)\\); \"---END---\" } } })",
-      "PowerShell($path='C:\\\\Users\\\\MjAdo\\\\.claude\\\\projects\\\\C--Users-MjAdo-Desktop-Portfolio\\\\3f6df37a-0ee2-4bb4-bb99-534a8edbe928.jsonl'; $lines=Get-Content $path; for\\($i=150;$i -lt $lines.Count;$i++\\){ $o=$null; try{ $o=$lines[$i]|ConvertFrom-Json }catch{ continue }; $types=\\($o.message.content | ForEach-Object {$_.type}\\) -join ','; if\\(!$types\\){ $types=$o.type }; Write-Output \\(\"[{0}] {1} :: {2}\" -f \\($i+1\\), $o.type, $types\\) })"
-    ]
-  }
-}
